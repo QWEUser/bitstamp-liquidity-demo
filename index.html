@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Bitstamp - Liquidity demo</title>
+    <meta
+      name="description"
+      content="This is a demo site, unaffiliated with Bitstamp. It serves to demonstrate Bitcoin liquidity on one of the oldest and most trusted crypto exhanges out there."
+    />
+    <meta name="viewport" content="width=device-width" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=B612&display=swap" rel="stylesheet"> -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script
+      charset="utf-8"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"
+    ></script>
+    <link rel="shortcut icon" href="index.ico" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <!--main nav-->
+
+    <div class="header-container">
+      <header>
+        <svg
+          class="header-logo"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 89 20"
+        >
+          <path
+            d="M0 19.97h76.61v-2.01H0v2.01zm81.92 0h6.58v-2.01h-6.58v2.01z"
+            fill="#159e49"
+          ></path>
+          <path
+            d="M14.93 14.93h2.74V4.6h-2.74zm-.27-13.31a1.61 1.61 0 0 1 .47-1.18A1.66 1.66 0 0 1 16.31 0a1.59 1.59 0 0 1 1.18.44A1.59 1.59 0 0 1 18 1.62a1.55 1.55 0 0 1-.47 1.18 1.6 1.6 0 0 1-1.18.44 1.66 1.66 0 0 1-1.18-.44 1.54 1.54 0 0 1-.51-1.18zM24 4.57h2.8v2.07H24v5a1.39 1.39 0 0 0 .39 1.06 1.35 1.35 0 0 0 1 .42 5.46 5.46 0 0 0 1.3-.18l.35 2a9.5 9.5 0 0 1-2.3.32 4.14 4.14 0 0 1-1.38-.26 3.25 3.25 0 0 1-1.09-.67 3.51 3.51 0 0 1-.71-1.07 3.45 3.45 0 0 1-.23-1.35V6.7h-1.89V4.63h1.89v-3H24v3zm4.41 2.86a2.71 2.71 0 0 1 .29-1.26 3.72 3.72 0 0 1 .8-1 4.29 4.29 0 0 1 1.24-.65 5.7 5.7 0 0 1 1.59-.23 10.56 10.56 0 0 1 1.83.17 12.36 12.36 0 0 1 1.92.54l-.59 1.94A10.93 10.93 0 0 0 34 6.46a6.06 6.06 0 0 0-1.41-.18 1.91 1.91 0 0 0-1.15.3.91.91 0 0 0-.44.82.76.76 0 0 0 .42.71 4.55 4.55 0 0 0 1 .42c.41.11.82.23 1.3.32a4.49 4.49 0 0 1 1.28.53 3.14 3.14 0 0 1 1 .94 3 3 0 0 1 .41 1.6 2.91 2.91 0 0 1-.29 1.3 3.69 3.69 0 0 1-.83 1 4 4 0 0 1-1.3.68 6.15 6.15 0 0 1-1.65.23 11 11 0 0 1-4-.82l.56-1.92a8.65 8.65 0 0 0 3.27.74 2.07 2.07 0 0 0 1.21-.33 1 1 0 0 0 .45-.88.84.84 0 0 0-.42-.74 3.2 3.2 0 0 0-1-.44c-.41-.12-.83-.24-1.3-.36a5.08 5.08 0 0 1-1.3-.53 3 3 0 0 1-1-.91 2.64 2.64 0 0 1-.38-1.54M42 4.57h2.8v2.07H42v5a1.37 1.37 0 0 0 1.41 1.48 5.33 5.33 0 0 0 1.3-.18l.35 2a9.43 9.43 0 0 1-2.3.32 4 4 0 0 1-1.43-.26 3.06 3.06 0 0 1-1.09-.67 2.91 2.91 0 0 1-.71-1.07 3.28 3.28 0 0 1-.24-1.35V6.7H37.4V4.63h1.89v-3h2.63v3zm7.09 7.2a1.37 1.37 0 0 0 .5 1.06 1.85 1.85 0 0 0 1.27.44 2.34 2.34 0 0 0 1.71-.67 2.39 2.39 0 0 0 .65-1.74v-.62a6 6 0 0 0-1.69-.24 3 3 0 0 0-1.8.47 1.52 1.52 0 0 0-.64 1.27m-2.57.15a2.94 2.94 0 0 1 1.24-2.54 5.87 5.87 0 0 1 3.48-.88c.32 0 .65 0 1 .05s.68.09 1 .15v-.53a1.62 1.62 0 0 0-.57-1.3 2.29 2.29 0 0 0-1.53-.5 8.83 8.83 0 0 0-3.36.74l-.68-1.89a11.55 11.55 0 0 1 4.34-.85 4.64 4.64 0 0 1 1.74.29 3.59 3.59 0 0 1 1.35.8 3.26 3.26 0 0 1 .89 1.21 4 4 0 0 1 .32 1.56v4.22a.72.72 0 0 0 .18.53.62.62 0 0 0 .53.21 1.23 1.23 0 0 0 .33 0 1.78 1.78 0 0 0 .2 0l.18 2c-.24 0-.44.09-.68.12a5.86 5.86 0 0 1-.74 0 2.3 2.3 0 0 1-1.35-.38 2.07 2.07 0 0 1-.83-1A4.81 4.81 0 0 1 48.7 15a3.4 3.4 0 0 1-1.15-.68 3.29 3.29 0 0 1-1-2.36m12.12-7.42h2.13L61.12 6a4.2 4.2 0 0 1 1.48-1.28 4.06 4.06 0 0 1 1.88-.44 4 4 0 0 1 2 .5 3.3 3.3 0 0 1 1.3 1.39 4.91 4.91 0 0 1 1.65-1.42 4.28 4.28 0 0 1 2.06-.47 4.44 4.44 0 0 1 1.51.26 3.24 3.24 0 0 1 1.21.8A3 3 0 0 1 75 6.55a4.21 4.21 0 0 1 .3 1.53v6.85h-2.65v-6.4a1.91 1.91 0 0 0-.56-1.45 2.05 2.05 0 0 0-1.44-.56 2.2 2.2 0 0 0-1.65.71 2.53 2.53 0 0 0-.65 1.83v5.87h-2.72v-6.4a2 2 0 0 0-.53-1.45 1.93 1.93 0 0 0-1.41-.56 2.22 2.22 0 0 0-1.69.71 2.49 2.49 0 0 0-.65 1.83v5.87h-2.71V4.54zm26.88 5.17a3.83 3.83 0 0 0-.21-1.33 2.67 2.67 0 0 0-.56-1 2.46 2.46 0 0 0-.78-.71 2.12 2.12 0 0 0-1.06-.24 2.25 2.25 0 0 0-1.74.74A2.62 2.62 0 0 0 80.47 9v1.38a2.8 2.8 0 0 0 .18 1 2.51 2.51 0 0 0 .5.82 2 2 0 0 0 .77.53 2.54 2.54 0 0 0 1 .18 2.5 2.5 0 0 0 1.08-.17 2.16 2.16 0 0 0 .83-.68 3.9 3.9 0 0 0 .56-1 3.7 3.7 0 0 0 .16-1.35zm-7.67-5.17H80l.32 1.33a3.87 3.87 0 0 1 3.25-1.59 4.46 4.46 0 0 1 1.89.41 4.6 4.6 0 0 1 1.47 1.12 5 5 0 0 1 1 1.71 6.58 6.58 0 0 1 .35 2.19 6.56 6.56 0 0 1-.35 2.18 5.31 5.31 0 0 1-1 1.71 4.6 4.6 0 0 1-1.47 1.12 4.36 4.36 0 0 1-1.89.41 4.12 4.12 0 0 1-1.71-.35 3.43 3.43 0 0 1-1.33-1.06V20h-2.65zM9 12.27a2.29 2.29 0 0 1-1.68.59H4V8.58h3.35A2.53 2.53 0 0 1 9 9.17a2.06 2.06 0 0 1 .62 1.54A1.85 1.85 0 0 1 9 12.27zM4 2.8h3a2.14 2.14 0 0 1 1.53.56 1.81 1.81 0 0 1 .67 1.45 1.8 1.8 0 0 1-.59 1.41 2.22 2.22 0 0 1-1.53.54H4zm7.7 6.05A3.64 3.64 0 0 0 10 7.52a3.19 3.19 0 0 0 1.39-1.18 3.3 3.3 0 0 0 .53-1.86A3.44 3.44 0 0 0 11.56 3a3.21 3.21 0 0 0-.91-1.18A4.16 4.16 0 0 0 9.26 1 5.77 5.77 0 0 0 7.49.77H0v1.88a2.08 2.08 0 0 1 2.06 2.1A2.07 2.07 0 0 1 0 6.84v1.71a2.08 2.08 0 0 1 2.06 2.1V11A2.08 2.08 0 0 1 0 13.07V15h7.82a5.09 5.09 0 0 0 1.83-.3 4 4 0 0 0 1.44-.8 3.52 3.52 0 0 0 .91-1.27 3.65 3.65 0 0 0 .35-1.6 3.63 3.63 0 0 0-.61-2.18z"
+            fill="#333433"
+          ></path>
+        </svg>
+        <ul>
+          <li><a href="#">Bitcoin liquidity demo</a></li>
+          <li><a href="#mobile-bitcoin-price-anchor">Current Bitcoin price</a></li>
+          <li><a href="#target-price-container">Target Bitcoin price</a></li>
+          <li><a href="#amount-spent-container">Throw cash at Bitcoin</a></li>
+          <li><a href="#bids-asks">Bids&asks</a></li>
+        </ul>
+        <div class="burger-menu-container"><div class="burger-menu"></div></div>
+      </header>
+    </div>
+
+<div class="mobile-menu-container">
+    <a href="#intro-container" class="mobile-menu__item">Intro</a>
+    <a href="#mobile-bitcoin-price-anchor" class="mobile-menu__item">Current Bitcoin price</a>
+    <a href="#target-price-container" class="mobile-menu__item">Target Bitcoin price</a>
+    <a href="#amount-spent-container" class="mobile-menu__item">Throw cash at Bitcoin</a>
+</div>
+
+
+    <div class="intro-container full-width" id="intro-container">
+      <div class="intro-container__grid">
+        <div class="intro">
+          <h1>
+            <span class="highlighted-text--color">Are you</span
+            ><br class="intro__line-break" />
+            a crypto whale?
+          </h1>
+          <h2>
+            Do you have what it takes to
+            <span class="highlighted-text--weight"
+              >move the price of Bitcoin</span
+            >
+            on Bitstamp and reach your target?<br class="intro__line-break" />
+            <span class="highlighted-text--weight">How far</span> can you spike
+            the price of Bitcoin with your spare cash?<br
+              class="intro__line-break"
+            />
+            Play with numbers below and find out if you really are
+            <span class="highlighted-text--weight"
+              >a whale or just a little crypto shrimp.</span
+            >
+          </h2>
+        </div>
+        <div class="whale-image">
+          <svg
+            version="1.1"
+            id="Capa_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 300.086 300.086"
+            xml:space="preserve"
+          >
+            <circle
+              cx="50%"
+              cy="50%"
+              r="135"
+              stroke="rgb(51, 52, 51)"
+              fill="#159e49"
+              stroke-width="3"
+            />
+            <path
+              d="M252.472,129.074c-35.063,1.018-81.701,5.444-133.099,14.293c-51.4,8.846-62.426-5.467-67.398-21.439
+       c-5.63-18.084,0.212-27.206,0.212-27.206c33.263-5.405,36.17-26.597,35.337-38.658c-3.323,4.165-8.413,6.899-12.634,7.058
+       c-3.024,0.11-12.306-9.346-27.274,5.832c0.834-8.314-3.143-13.805-13.254-16.631C23.987,49.41,16.032,63.42,0.223,49.414
+       c-3.326,44.068,31.594,45.308,31.594,45.308c-14.225,78.259,45.009,118.089,46.028,122.857c1.021,4.759-15.999,9.523-12.938,14.298
+       c3.065,4.76,23.83,3.746,36.088,1.354c59.566,15.655,72.466,18.708,143.647,17.031c57.279-1.369,56.638-51.767,54.944-69.499
+       C296.259,145.907,287.535,128.051,252.472,129.074z"
+              fill="rgb(51, 52, 51)"
+            />
+          </svg>
+        </div>
+        <div id="mobile-bitcoin-price-anchor"></div>
+      </div>
+    </div>
+
+    <div class="bitcoin-price-container">
+      <img src="btc.svg" alt="BTC" title="BTC" class="image-bitcoin" />Bitcoin
+      price
+    </div>
+    <div class="bitcoin-price-container" id="current-price-container">
+      <div class="faux-bitcoin-price"></div>
+    </div>
+
+    <div class="main-container full-width">
+      <div class="main">
+        <div id="target-price-container" class="main-text-containers">
+          <p>
+            To move the price of
+            <span class="main__highlighted-text">Bitcoin</span>
+            <span id="ccFirst">to</span>
+          </p>
+          <input
+            type="text"
+            name="price"
+            id="main-text-containers__user-input"
+            class="main-text-containers__input"
+            value="$ 100,000.00"
+            size="9"
+            maxlength="15"
+            data-target="100000"
+            autocomplete="off"
+          />
+
+          <p>on Bitstamp, you currently need to spend</p>
+          <p id="main-text-containers__target-result">
+            <div class="faux-result-text loading-element"></div>
+          </p>
+          <p id="main-text-containers__target-average">
+            <div class="faux-text loading-element"></div>
+            <div class="faux-text loading-element"></div>
+          </p>
+        </div>
+
+        <div id="amount-spent-container" class="main-text-containers">
+          <p>If you have</p>
+          <input
+            type="text"
+            name="price"
+            id="main-text-containers__user-cash"
+            class="main-text-containers__input"
+            value="$ 5,000,000.00"
+            size="10"
+            maxlength="15"
+            data-target="5000000"
+            autocomplete="off"
+          />
+          <p>you can move the price of Bitcoin to</p>
+          <p id="main-text-containers__cash-result"><div class="faux-result-text loading-element"></div></p>
+
+          <p id="main-text-containers__cash-average">
+            <div class="faux-text loading-element"></div>
+            <div class="faux-text loading-element"></div>
+            <div class="faux-text loading-element"></div>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="bids-asks">
+      <h1 id="bids--title" class="bids-asks--title">Top 20 bids</h1>
+      <h1 id="asks--title" class="bids-asks--title">Top 20 asks</h1>
+      <div class="bids-asks--column-name">Price</div>
+      <div class="bids-asks--column-name">Amount</div>
+      <div class="bids-asks--column-name" id="bids-weight-title">Weight</div>
+      <div class="bids-asks--column-name">Price</div>
+      <div class="bids-asks--column-name">Amount</div>
+      <div class="bids-asks--column-name" id="asks-weight-title">Weight</div>
+    </div>
+
+    <script src="index.js"></script>
+
+    <footer>
+      <p>Disclaimer: This is a demo site, unaffiliated with Bitstamp. It serves to demonstrate Bitcoin liquidity on one of the oldest and most trusted crypto exhanges out there.</p>
+    </footer>
+  </body>
+</html>
