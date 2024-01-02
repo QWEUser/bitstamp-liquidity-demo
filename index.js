@@ -172,7 +172,6 @@ function init() {
       "https://www.bitstamp.net/api/v2/order_book/btcusd?group=1",
       function (data) {
         dataObject = data;
-        // var html = "<h2>Bids</h2>";
         i = 0;
 
         orderBookTimestamp = data.microtimestamp;
@@ -189,7 +188,6 @@ function init() {
       }
     ).fail(function () {
       {
-        // $("#current-price-container").html("Fetching Bitcoin price ...");
         console.log(
           "Oops, looks like your request got blocked! Don't worry, it's just a built in browser precaution, the data should start loading with the next trade that happens on Bitstamp :)"
         );
@@ -308,6 +306,7 @@ function init() {
              * order book to get the correct order book state
              */
             wsDataQueue.push(response.data);
+            console.log(orderBookTimestamp);
             if (orderBookTimestamp !== null) {
               /**
                * After we have our initial order book state, the first thing we need to do is to find
@@ -317,8 +316,20 @@ function init() {
               wsDataQueueTimestamps = wsDataQueue.map(
                 (curData) => curData.microtimestamp
               );
-              if (wsDataQueueTimestamps.includes(orderBookTimestamp)) {
+              console.log(wsDataQueueTimestamps);
+              console.log(wsDataQueueTimestamps);
+              // this line below was part of the original Bitstamp documentation, but is not functioning, because it searches for a strig in an object with string elements, instead of comparing the first and last timestamp in wsDataQueueTimestamps
+              // if (wsDataQueueTimestamps.includes(orderBookTimestamp)) {
+              if (
+                Number(wsDataQueueTimestamps[0]) <=
+                  Number(orderBookTimestamp) &&
+                Number(orderBookTimestamp) <=
+                  Number(
+                    wsDataQueueTimestamps[wsDataQueueTimestamps.length - 1]
+                  )
+              ) {
                 foundStartingPoint = true;
+                console.log("foundStartingPoint = true");
                 for (var i = 0; i < wsDataQueue.length; i++) {
                   // We assume that the microtimestamps are in an increasing order
                   if (wsDataQueue[i].microtimestamp > orderBookTimestamp) {
@@ -380,7 +391,7 @@ function displayData() {
     btcBought = 0;
     averageSecond = 0;
 
-    //delete all elements from bids-asks grid
+    // Delete all elements from bids-asks grid
 
     $(".bids-asks--elements").remove();
     if (displayDataFirstTime) {
@@ -456,7 +467,7 @@ function displayData() {
           ${numeral(resultFirst).format(fiatFormat)}</span> 
           at an average price of <span class="main__highlighted-text">
           ${numeral(resultFirst / amountFirst).format(
-            fiatFormatccSecond
+            fiatFormat
           )}</span> per Bitcoin.`
       );
     }
