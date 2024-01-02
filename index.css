@@ -83,6 +83,10 @@ header ul li a:hover {
   margin-right: 2rem;
 }
 
+.header-logo:hover {
+  cursor: pointer;
+}
+
 header ul li a::after {
   display: block;
   height: 2px;

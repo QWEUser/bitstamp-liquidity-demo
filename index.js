@@ -45,6 +45,15 @@ $(".mobile-menu__item").click(function () {
   $(".burger-menu-container").toggleClass("burger-menu-container-open");
 });
 
+$(".header-logo").click(function () {
+  // $(".header-logo").scrollTop(0);
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+});
+
 // populate bids and asks grid with loading elements
 
 for (i = 0; i < 20 * 6; i++) {
