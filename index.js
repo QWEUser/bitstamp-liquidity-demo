@@ -46,7 +46,6 @@ $(".mobile-menu__item").click(function () {
 });
 
 $(".header-logo").click(function () {
-  // $(".header-logo").scrollTop(0);
   window.scroll({
     top: 0,
     left: 0,
@@ -315,7 +314,6 @@ function init() {
              * order book to get the correct order book state
              */
             wsDataQueue.push(response.data);
-            console.log(orderBookTimestamp);
             if (orderBookTimestamp !== null) {
               /**
                * After we have our initial order book state, the first thing we need to do is to find
@@ -325,8 +323,6 @@ function init() {
               wsDataQueueTimestamps = wsDataQueue.map(
                 (curData) => curData.microtimestamp
               );
-              console.log(wsDataQueueTimestamps);
-              console.log(wsDataQueueTimestamps);
               // this line below was part of the original Bitstamp documentation, but is not functioning, because it searches for a strig in an object with string elements, instead of comparing the first and last timestamp in wsDataQueueTimestamps
               // if (wsDataQueueTimestamps.includes(orderBookTimestamp)) {
               if (
@@ -338,7 +334,6 @@ function init() {
                   )
               ) {
                 foundStartingPoint = true;
-                console.log("foundStartingPoint = true");
                 for (var i = 0; i < wsDataQueue.length; i++) {
                   // We assume that the microtimestamps are in an increasing order
                   if (wsDataQueue[i].microtimestamp > orderBookTimestamp) {
