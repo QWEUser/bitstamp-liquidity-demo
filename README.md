@@ -1,8 +1,8 @@
 # Bitstamp - liquidity demo
 
-Click [here](https://qweuser.github.io/bitstamp-liquidity-demo/) to check the site and play with the numbers yourself!
+Click [here](https://qweuser.github.io/bitstamp-liquidity-demo/) to check out this project and play with the numbers yourself!
 
-This is a demo site, unaffiliated with Bitstamp. It serves to demonstrate Bitcoin liquidity on one of the oldest and most trusted crypto exhanges out there.
+__This is a demo site, unaffiliated with Bitstamp. It serves to demonstrate Bitcoin liquidity on one of the oldest and most trusted crypto exhanges out there.__
 
 # Note
 
